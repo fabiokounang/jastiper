@@ -3,14 +3,15 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'Buyer Dashboard',
-          subtitle: 'Track active orders, pending payments, and history in one view.',
+          subtitle: 'Track orders, pending payments, and completed transactions with clarity.',
           actions: [
             { label: 'Explore Trips', href: '/', variant: 'primary' },
-            { label: 'My Orders', href: '/buyer/orders', variant: 'secondary' }
+            { label: 'Order History', href: '/buyer/orders', variant: 'secondary' }
           ]
         }) %>
 
@@ -21,11 +22,12 @@
         </section>
 
         <section class="card cozy section-gap">
-          <h3>Stage 4 Preview</h3>
-          <p>Order timeline, payment status, and tracking updates will appear here.</p>
+          <h3>Stage 4 Focus</h3>
+          <p>Live order timeline, payment details, and delivery tracking will appear here.</p>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>

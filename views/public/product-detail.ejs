@@ -3,33 +3,42 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'Product Detail',
-          subtitle: 'Public buyer-facing product page within a trip.',
+          subtitle: 'Buyer-facing product page with clean purchase context.',
           actions: [{ label: 'Back to Trip', href: '/trip/' + slug, variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card">
+          <article class="card cozy">
             <h3>Trip</h3>
             <p class="mono"><%= slug %></p>
-            <h3>Product</h3>
+
+            <h3 style="margin-top: 12px">Product</h3>
             <p class="mono"><%= productSlug %></p>
-            <p>Stage 4 will show image gallery, variant selectors, and order actions.</p>
+
+            <p>
+              Stage 4 will add image gallery, variant options, pricing breakdown, and Add to Cart
+              controls.
+            </p>
           </article>
+
           <article class="card subtle">
-            <h3>Planned Details</h3>
+            <h3>What buyers will see</h3>
             <ul class="list-clean">
-              <li>Price breakdown (base + jastip fee)</li>
-              <li>Variant and stock status</li>
-              <li>Purchase location and notes</li>
+              <li>Base price + jastip fee estimate</li>
+              <li>Stock and availability status</li>
+              <li>Variant selector and product notes</li>
+              <li>Purchase location details</li>
             </ul>
           </article>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>

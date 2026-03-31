@@ -3,59 +3,67 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/flash') %>
+
         <section class="hero-panel card cozy">
           <div>
-            <span class="pill">One App, Multi Role</span>
-            <h1>Build and run your jastip business effortlessly</h1>
+            <span class="pill">Trusted Multi-Role Platform</span>
+            <h1>Make your jastip business feel premium, clear, and effortless</h1>
             <p>
-              A modern platform for jastipers, buyers, and admins in one cozy and secure
-              ecosystem.
+              One modern application for jastiper, buyer, and admin operations. Share trips,
+              collect orders, and monitor progress with a cleaner experience.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="/register">Start Now</a>
-              <a class="btn btn-secondary" href="/login">I Already Have Account</a>
+              <a class="btn btn-primary" href="/register">Create Account</a>
+              <a class="btn btn-secondary" href="/login">Login</a>
             </div>
           </div>
+
           <div class="card subtle hero-stats">
-            <h3>Platform Highlights</h3>
+            <h3>Quick Snapshot</h3>
             <div class="stats-grid two-col compact">
               <article>
-                <p class="kpi">3 Roles</p>
-                <span>Admin, Jastiper, Buyer</span>
+                <p class="kpi">3</p>
+                <span>Connected roles</span>
               </article>
               <article>
-                <p class="kpi">1 Codebase</p>
-                <span>Single project architecture</span>
+                <p class="kpi">1</p>
+                <span>Unified codebase</span>
               </article>
               <article>
-                <p class="kpi">KTP Flow</p>
-                <span>Identity verification ready</span>
+                <p class="kpi">100%</p>
+                <span>KTP-based onboarding</span>
               </article>
               <article>
-                <p class="kpi">Checkout</p>
-                <span>Order and payment-ready structure</span>
+                <p class="kpi">Ready</p>
+                <span>Checkout + payment flow</span>
               </article>
             </div>
           </div>
         </section>
 
-        <section class="section-gap">
-          <div class="grid two-col">
-            <article class="card">
-              <h3>For Jastiper</h3>
-              <p>Create trips, add products, publish shareable links to social media.</p>
-            </article>
-            <article class="card">
-              <h3>For Buyer</h3>
-              <p>Browse trips, add items to cart, checkout quickly with clear steps.</p>
-            </article>
-          </div>
+        <section class="grid two-col section-gap">
+          <article class="card">
+            <h3>For Jastiper</h3>
+            <p>
+              Create trips, add products, publish links to social media, and manage order status
+              in one dashboard.
+            </p>
+          </article>
+          <article class="card">
+            <h3>For Buyer</h3>
+            <p>
+              Discover products from trip links, checkout quickly, and track payment and delivery
+              updates.
+            </p>
+          </article>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>

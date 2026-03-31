@@ -2,22 +2,35 @@
   <div class="container navbar">
     <a href="/" class="brand">
       <span class="brand-mark">J</span>
-      <span>Jastip Platform</span>
+      <span class="brand-copy">
+        Jastip Platform
+        <small>Trusted global shopping assistant</small>
+      </span>
     </a>
 
     <nav class="nav-links">
       <a href="/" class="<%= currentPath === '/' ? 'is-active' : '' %>">Home</a>
-      <a href="/trip/sample-trip" class="<%= currentPath.includes('/trip') ? 'is-active' : '' %>">Trips</a>
+      <a href="/trip/sample-trip" class="<%= currentPath.includes('/trip') ? 'is-active' : '' %>">Public Trips</a>
       <a href="/cart" class="<%= currentPath === '/cart' ? 'is-active' : '' %>">Cart</a>
+      <% if (authUser && authUser.role === 'jastiper') { %>
+        <a href="/jastiper/dashboard" class="<%= currentPath.includes('/jastiper') ? 'is-active' : '' %>">Jastiper</a>
+      <% } %>
+      <% if (authUser && authUser.role === 'buyer') { %>
+        <a href="/buyer/dashboard" class="<%= currentPath.includes('/buyer') ? 'is-active' : '' %>">Buyer</a>
+      <% } %>
+      <% if (authUser && authUser.role === 'admin') { %>
+        <a href="/admin/dashboard" class="<%= currentPath.includes('/admin') ? 'is-active' : '' %>">Admin</a>
+      <% } %>
     </nav>
 
     <div class="nav-actions">
       <% if (authUser) { %>
+        <span class="role-badge"><%= authUser.role %></span>
         <form action="/logout" method="post">
-          <button type="submit" class="btn btn-sm">Logout</button>
+          <button type="submit" class="btn btn-sm btn-ghost">Logout</button>
         </form>
       <% } else { %>
-        <a href="/login" class="btn btn-sm">Login</a>
+        <a href="/login" class="btn btn-sm btn-ghost">Login</a>
         <a href="/register" class="btn btn-sm btn-primary">Register</a>
       <% } %>
     </div>

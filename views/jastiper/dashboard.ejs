@@ -3,14 +3,15 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'Jastiper Dashboard',
-          subtitle: 'Manage trips, products, and order progress from one place.',
+          subtitle: 'Manage trips, products, and order updates from a single cozy workspace.',
           actions: [
             { label: 'Create Trip', href: '/jastiper/trips/create', variant: 'primary' },
-            { label: 'View Orders', href: '/jastiper/orders', variant: 'secondary' }
+            { label: 'Orders', href: '/jastiper/orders', variant: 'secondary' }
           ]
         }) %>
 
@@ -22,11 +23,12 @@
         </section>
 
         <section class="card cozy section-gap">
-          <h3>Next Build (Stage 3)</h3>
-          <p>Trip/product CRUD and order status workflows will be connected here.</p>
+          <h3>Next Build: Stage 3</h3>
+          <p>Trip CRUD, product CRUD, and order status timeline will be activated here.</p>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>

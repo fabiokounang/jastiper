@@ -3,34 +3,38 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'Trip Showcase',
-          subtitle: 'Public trip page where buyers explore listed products.',
+          subtitle: 'Public page where buyers explore available products from a jastiper trip.',
           actions: [{ label: 'Back Home', href: '/', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card">
-            <h3>Trip Slug</h3>
+          <article class="card cozy">
+            <h3>Trip Identifier</h3>
             <p class="mono">/<%= slug %></p>
             <p>
-              Stage 4 will render destination details, timeline, and published products from
-              MySQL.
+              In Stage 4, this section will show destination timeline, order deadline, and
+              published product collection.
             </p>
           </article>
+
           <article class="card subtle">
-            <h3>Buyer Journey</h3>
+            <h3>Buyer Flow</h3>
             <ul class="list-clean">
-              <li>View trip information</li>
+              <li>Review trip info and notes</li>
               <li>Browse products and variants</li>
-              <li>Add to cart and proceed to checkout</li>
+              <li>Add selected items to cart</li>
+              <li>Proceed to checkout and payment</li>
             </ul>
           </article>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>

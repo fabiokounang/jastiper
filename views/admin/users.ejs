@@ -3,17 +3,18 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'User Monitoring',
-          subtitle: 'Inspect user accounts, statuses, and verification flow.',
+          subtitle: 'Search users, filter status, and prepare moderation actions clearly.',
           actions: [{ label: 'Back to Dashboard', href: '/admin/dashboard', variant: 'secondary' }]
         }) %>
 
-        <section class="card">
+        <section class="card cozy">
           <div class="toolbar">
-            <input type="text" placeholder="Search name, email, phone..." />
+            <input type="text" placeholder="Search by name, email, phone" />
             <select>
               <option>All Roles</option>
               <option>Admin</option>
@@ -27,13 +28,18 @@
               <option>Pending</option>
             </select>
           </div>
+
           <div class="empty-state">
-            <h3>User table will be connected in Stage 6</h3>
-            <p>List, filters, moderation actions, and verification approval are planned.</p>
+            <h3>User table will be active in Stage 6</h3>
+            <p>
+              This page will include verification approval/rejection, account suspend/activate,
+              and detailed user drill-down.
+            </p>
           </div>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>
