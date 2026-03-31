@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> | Jastip Platform</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <main class="container">
+      <%- include('../partials/flash') %>
+      <section class="hero">
+        <h1>Premium Jastip Platform in One App</h1>
+        <p>One codebase for admin, jastiper, and buyer workflows.</p>
+        <div class="actions">
+          <a class="btn primary" href="/register">Get Started</a>
+          <a class="btn" href="/login">Login</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
