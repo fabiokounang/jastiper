@@ -1,23 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %> | Jastip Platform</title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
-    <main class="container">
-      <%- include('../partials/flash') %>
-      <section class="hero">
-        <h1>Premium Jastip Platform in One App</h1>
-        <p>One codebase for admin, jastiper, and buyer workflows.</p>
-        <div class="actions">
-          <a class="btn primary" href="/register">Get Started</a>
-          <a class="btn" href="/login">Login</a>
-        </div>
-      </section>
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/flash') %>
+        <section class="hero-panel card cozy">
+          <div>
+            <span class="pill">One App, Multi Role</span>
+            <h1>Build and run your jastip business effortlessly</h1>
+            <p>
+              A modern platform for jastipers, buyers, and admins in one cozy and secure
+              ecosystem.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="/register">Start Now</a>
+              <a class="btn btn-secondary" href="/login">I Already Have Account</a>
+            </div>
+          </div>
+          <div class="card subtle hero-stats">
+            <h3>Platform Highlights</h3>
+            <div class="stats-grid two-col compact">
+              <article>
+                <p class="kpi">3 Roles</p>
+                <span>Admin, Jastiper, Buyer</span>
+              </article>
+              <article>
+                <p class="kpi">1 Codebase</p>
+                <span>Single project architecture</span>
+              </article>
+              <article>
+                <p class="kpi">KTP Flow</p>
+                <span>Identity verification ready</span>
+              </article>
+              <article>
+                <p class="kpi">Checkout</p>
+                <span>Order and payment-ready structure</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-gap">
+          <div class="grid two-col">
+            <article class="card">
+              <h3>For Jastiper</h3>
+              <p>Create trips, add products, publish shareable links to social media.</p>
+            </article>
+            <article class="card">
+              <h3>For Buyer</h3>
+              <p>Browse trips, add items to cart, checkout quickly with clear steps.</p>
+            </article>
+          </div>
+        </section>
+      </div>
     </main>
+    <%- include('../partials/footer') %>
   </body>
 </html>

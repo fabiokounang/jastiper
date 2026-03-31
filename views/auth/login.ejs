@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="auth-wrapper">
-      <h1>Login</h1>
-      <%- include('../partials/flash') %>
-      <form action="/login" method="post" class="card">
-        <label>Email</label>
-        <input type="email" name="email" required />
-        <label>Password</label>
-        <input type="password" name="password" required />
-        <button type="submit" class="btn primary">Login</button>
-      </form>
-      <p>Do not have an account? <a href="/register">Register</a></p>
-    </main>
+    <div class="auth-shell">
+      <section class="auth-left">
+        <a href="/" class="brand auth-brand">Jastip Platform</a>
+        <h1>Welcome back</h1>
+        <p>Log in to continue managing trips, orders, and your account activity.</p>
+        <ul class="list-clean">
+          <li>Secure session-based login</li>
+          <li>Role-based dashboard access</li>
+          <li>Fast and mobile-friendly interface</li>
+        </ul>
+      </section>
+
+      <section class="auth-right">
+        <div class="card auth-card cozy">
+          <h2>Login</h2>
+          <%- include('../partials/flash') %>
+          <form action="/login" method="post" class="form-grid">
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="you@email.com" required />
+            </div>
+
+            <div>
+              <label for="password">Password</label>
+              <input id="password" type="password" name="password" placeholder="********" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary full">Login</button>
+          </form>
+          <p class="muted center">
+            No account yet? <a href="/register">Create one now</a>
+          </p>
+        </div>
+      </section>
+    </div>
   </body>
 </html>

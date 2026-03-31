@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>User Monitoring</h1>
-      <p>Stage 6 will implement list, filters, and moderation actions.</p>
+    <%- include('../partials/header') %>
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          title: 'User Monitoring',
+          subtitle: 'Inspect user accounts, statuses, and verification flow.',
+          actions: [{ label: 'Back to Dashboard', href: '/admin/dashboard', variant: 'secondary' }]
+        }) %>
+
+        <section class="card">
+          <div class="toolbar">
+            <input type="text" placeholder="Search name, email, phone..." />
+            <select>
+              <option>All Roles</option>
+              <option>Admin</option>
+              <option>Jastiper</option>
+              <option>Buyer</option>
+            </select>
+            <select>
+              <option>All Status</option>
+              <option>Active</option>
+              <option>Suspended</option>
+              <option>Pending</option>
+            </select>
+          </div>
+          <div class="empty-state">
+            <h3>User table will be connected in Stage 6</h3>
+            <p>List, filters, moderation actions, and verification approval are planned.</p>
+          </div>
+        </section>
+      </div>
     </main>
+    <%- include('../partials/footer') %>
   </body>
 </html>

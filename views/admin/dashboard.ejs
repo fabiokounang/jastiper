@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>Admin Dashboard</h1>
-      <p>Stage 6 will render platform summary cards and charts.</p>
+    <%- include('../partials/header') %>
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          title: 'Admin Dashboard',
+          subtitle: 'Monitor users, trips, products, orders, and payments platform-wide.',
+          actions: [
+            { label: 'View Users', href: '/admin/users', variant: 'primary' },
+            { label: 'Open Reports', href: '/admin/reports', variant: 'secondary' }
+          ]
+        }) %>
+
+        <section class="stats-grid four-col">
+          <article class="card kpi-card"><p class="kpi">0</p><span>Total Users</span></article>
+          <article class="card kpi-card"><p class="kpi">0</p><span>Total Trips</span></article>
+          <article class="card kpi-card"><p class="kpi">0</p><span>Total Orders</span></article>
+          <article class="card kpi-card"><p class="kpi">0</p><span>Total GMV</span></article>
+        </section>
+
+        <section class="card cozy section-gap">
+          <h3>Stage 6 Monitoring</h3>
+          <p>Real KPI cards, trends, pending verification queues, and moderation controls.</p>
+        </section>
+      </div>
     </main>
+    <%- include('../partials/footer') %>
   </body>
 </html>

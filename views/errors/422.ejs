@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>Validation Errors</h1>
-      <ul>
-        <% errors.forEach((error) => { %>
-          <li><%= error.msg %> (<%= error.path %>)</li>
-        <% }) %>
-      </ul>
-      <a href="javascript:history.back()" class="btn">Go Back</a>
+    <main class="page-shell">
+      <div class="container small">
+        <section class="card cozy">
+          <h1>Validation Error</h1>
+          <p class="muted">Please review the highlighted issues and submit again.</p>
+          <ul class="list-clean">
+            <% errors.forEach((error) => { %>
+              <li><strong><%= error.path %></strong>: <%= error.msg %></li>
+            <% }) %>
+          </ul>
+          <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+        </section>
+      </div>
     </main>
   </body>
 </html>

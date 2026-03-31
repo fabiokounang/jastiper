@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>Public Trip: <%= slug %></h1>
-      <p>Stage 4 will render trip + product listing data from MySQL.</p>
+    <%- include('../partials/header') %>
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          title: 'Trip Showcase',
+          subtitle: 'Public trip page where buyers explore listed products.',
+          actions: [{ label: 'Back Home', href: '/', variant: 'secondary' }]
+        }) %>
+
+        <section class="grid two-col">
+          <article class="card">
+            <h3>Trip Slug</h3>
+            <p class="mono">/<%= slug %></p>
+            <p>
+              Stage 4 will render destination details, timeline, and published products from
+              MySQL.
+            </p>
+          </article>
+          <article class="card subtle">
+            <h3>Buyer Journey</h3>
+            <ul class="list-clean">
+              <li>View trip information</li>
+              <li>Browse products and variants</li>
+              <li>Add to cart and proceed to checkout</li>
+            </ul>
+          </article>
+        </section>
+      </div>
     </main>
+    <%- include('../partials/footer') %>
   </body>
 </html>
