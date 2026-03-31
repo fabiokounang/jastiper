@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %> | Jastip Platform</title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>Trip: <%= slug %></h1>
-      <h2>Product: <%= productSlug %></h2>
-      <p>Stage 4 will render detailed product info with variants and images.</p>
+    <%- include('../partials/header') %>
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          title: 'Product Detail',
+          subtitle: 'Public buyer-facing product page within a trip.',
+          actions: [{ label: 'Back to Trip', href: '/trip/' + slug, variant: 'secondary' }]
+        }) %>
+
+        <section class="grid two-col">
+          <article class="card">
+            <h3>Trip</h3>
+            <p class="mono"><%= slug %></p>
+            <h3>Product</h3>
+            <p class="mono"><%= productSlug %></p>
+            <p>Stage 4 will show image gallery, variant selectors, and order actions.</p>
+          </article>
+          <article class="card subtle">
+            <h3>Planned Details</h3>
+            <ul class="list-clean">
+              <li>Price breakdown (base + jastip fee)</li>
+              <li>Variant and stock status</li>
+              <li>Purchase location and notes</li>
+            </ul>
+          </article>
+        </section>
+      </div>
     </main>
+    <%- include('../partials/footer') %>
   </body>
 </html>

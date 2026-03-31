@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>Checkout</h1>
-      <p>Stage 4 and Stage 5 will implement checkout and payment flow.</p>
+    <%- include('../partials/header') %>
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          title: 'Checkout',
+          subtitle: 'Complete shipping details and payment method.',
+          actions: [{ label: 'Back to Cart', href: '/cart', variant: 'secondary' }]
+        }) %>
+
+        <section class="grid two-col">
+          <article class="card">
+            <h3>Checkout Form (Stage 4)</h3>
+            <p>Receiver info, shipping address, notes, and payment method.</p>
+          </article>
+          <article class="card subtle">
+            <h3>Payment Preparation (Stage 5)</h3>
+            <p>QRIS and MNC callback architecture will be connected here.</p>
+          </article>
+        </section>
+      </div>
     </main>
+    <%- include('../partials/footer') %>
   </body>
 </html>

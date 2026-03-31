@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>Cart</h1>
-      <p>Stage 4 will implement cart items and quantity management.</p>
+    <%- include('../partials/header') %>
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          title: 'Your Cart',
+          subtitle: 'Review selected products before checkout.',
+          actions: [{ label: 'Continue Browsing', href: '/', variant: 'secondary' }]
+        }) %>
+
+        <section class="card cozy">
+          <div class="empty-state">
+            <h3>Cart module is ready for Stage 4</h3>
+            <p>
+              Quantity updates, variant selection, notes, and cart totals will be handled in
+              the next implementation stage.
+            </p>
+            <a class="btn btn-primary" href="/checkout">Proceed to Checkout</a>
+          </div>
+        </section>
+      </div>
     </main>
+    <%- include('../partials/footer') %>
   </body>
 </html>

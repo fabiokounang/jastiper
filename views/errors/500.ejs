@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>500 Internal Server Error</h1>
-      <p><%= message %></p>
-      <a href="/" class="btn">Back Home</a>
+    <main class="page-shell">
+      <div class="container small">
+        <section class="card cozy center error-card">
+          <p class="error-code">500</p>
+          <h1>Something went wrong</h1>
+          <p><%= message %></p>
+          <a href="/" class="btn btn-primary">Back to Home</a>
+        </section>
+      </div>
     </main>
   </body>
 </html>

@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %> | Jastip Platform</title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>Buyer Dashboard</h1>
-      <p>Stage 4 will add order and payment summaries.</p>
+    <%- include('../partials/header') %>
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          title: 'Buyer Dashboard',
+          subtitle: 'Track active orders, pending payments, and history in one view.',
+          actions: [
+            { label: 'Explore Trips', href: '/', variant: 'primary' },
+            { label: 'My Orders', href: '/buyer/orders', variant: 'secondary' }
+          ]
+        }) %>
+
+        <section class="stats-grid three-col">
+          <article class="card kpi-card"><p class="kpi">0</p><span>Active Orders</span></article>
+          <article class="card kpi-card"><p class="kpi">0</p><span>Pending Payments</span></article>
+          <article class="card kpi-card"><p class="kpi">0</p><span>Completed Orders</span></article>
+        </section>
+
+        <section class="card cozy section-gap">
+          <h3>Stage 4 Preview</h3>
+          <p>Order timeline, payment status, and tracking updates will appear here.</p>
+        </section>
+      </div>
     </main>
+    <%- include('../partials/footer') %>
   </body>
 </html>

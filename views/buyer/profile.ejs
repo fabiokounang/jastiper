@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="container">
-      <h1>Buyer Profile</h1>
-      <p>Stage 4 will implement profile editing.</p>
+    <%- include('../partials/header') %>
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          title: 'Buyer Profile',
+          subtitle: 'Manage personal data and shipping preference.',
+          actions: [{ label: 'Back to Dashboard', href: '/buyer/dashboard', variant: 'secondary' }]
+        }) %>
+
+        <section class="grid two-col">
+          <article class="card">
+            <h3>Account Details</h3>
+            <p>Full name, phone, city, and profile updates.</p>
+          </article>
+          <article class="card subtle">
+            <h3>Shipping Addresses</h3>
+            <p>Multiple addresses with default selection for faster checkout.</p>
+          </article>
+        </section>
+      </div>
     </main>
+    <%- include('../partials/footer') %>
   </body>
 </html>

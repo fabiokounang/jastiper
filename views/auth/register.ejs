@@ -1,44 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/css/style.css" />
-  </head>
+  <%- include('../partials/head', { title }) %>
   <body>
-    <main class="auth-wrapper">
-      <h1>Register</h1>
-      <form action="/register" method="post" enctype="multipart/form-data" class="card">
-        <label>Full Name</label>
-        <input type="text" name="full_name" required />
+    <div class="auth-shell">
+      <section class="auth-left">
+        <a href="/" class="brand auth-brand">Jastip Platform</a>
+        <h1>Create your account</h1>
+        <p>
+          Register as buyer or jastiper with KTP data so the platform remains trusted and
+          secure.
+        </p>
+      </section>
 
-        <label>Email</label>
-        <input type="email" name="email" required />
+      <section class="auth-right">
+        <div class="card auth-card cozy">
+          <h2>Register</h2>
+          <%- include('../partials/flash') %>
+          <form action="/register" method="post" enctype="multipart/form-data" class="form-grid two-col">
+            <div class="span-2">
+              <label for="full_name">Full Name</label>
+              <input id="full_name" type="text" name="full_name" required />
+            </div>
 
-        <label>Phone</label>
-        <input type="text" name="phone" required />
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" required />
+            </div>
 
-        <label>Password</label>
-        <input type="password" name="password" required />
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" type="text" name="phone" required />
+            </div>
 
-        <label>Confirm Password</label>
-        <input type="password" name="confirm_password" required />
+            <div>
+              <label for="password">Password</label>
+              <input id="password" type="password" name="password" required />
+            </div>
 
-        <label>Role</label>
-        <select name="role" required>
-          <option value="buyer">Buyer</option>
-          <option value="jastiper">Jastiper</option>
-        </select>
+            <div>
+              <label for="confirm_password">Confirm Password</label>
+              <input id="confirm_password" type="password" name="confirm_password" required />
+            </div>
 
-        <label>KTP Number</label>
-        <input type="text" name="ktp_number" required />
+            <div>
+              <label for="role">Role</label>
+              <select id="role" name="role" required>
+                <option value="buyer">Buyer</option>
+                <option value="jastiper">Jastiper</option>
+              </select>
+            </div>
 
-        <label>KTP Photo</label>
-        <input type="file" name="ktp_photo" accept="image/*" required />
+            <div>
+              <label for="ktp_number">KTP Number</label>
+              <input id="ktp_number" type="text" name="ktp_number" required />
+            </div>
 
-        <button type="submit" class="btn primary">Create Account</button>
-      </form>
-    </main>
+            <div class="span-2">
+              <label for="ktp_photo">KTP Photo</label>
+              <input id="ktp_photo" type="file" name="ktp_photo" accept="image/*" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary full span-2">Create Account</button>
+          </form>
+          <p class="muted center">Already registered? <a href="/login">Back to login</a></p>
+        </div>
+      </section>
+    </div>
   </body>
 </html>

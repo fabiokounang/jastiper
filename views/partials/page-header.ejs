@@ -1,0 +1,16 @@
+<section class="page-header card">
+  <div>
+    <p class="eyebrow"><%= eyebrow || "Overview" %></p>
+    <h1><%= title %></h1>
+    <% if (subtitle) { %>
+      <p class="muted"><%= subtitle %></p>
+    <% } %>
+  </div>
+  <% if (actions && actions.length) { %>
+    <div class="toolbar">
+      <% actions.forEach((action) => { %>
+        <a class="btn <%= action.variant === 'primary' ? 'btn-primary' : 'btn-secondary' %>" href="<%= action.href %>"><%= action.label %></a>
+      <% }) %>
+    </div>
+  <% } %>
+</section>

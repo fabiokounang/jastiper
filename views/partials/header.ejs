@@ -1,10 +1,25 @@
 <header class="site-header">
-  <div class="container">
-    <a href="/" class="brand">Jastip Platform</a>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
+  <div class="container navbar">
+    <a href="/" class="brand">
+      <span class="brand-mark">J</span>
+      <span>Jastip Platform</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="/" class="<%= currentPath === '/' ? 'is-active' : '' %>">Home</a>
+      <a href="/trip/sample-trip" class="<%= currentPath.includes('/trip') ? 'is-active' : '' %>">Trips</a>
+      <a href="/cart" class="<%= currentPath === '/cart' ? 'is-active' : '' %>">Cart</a>
     </nav>
+
+    <div class="nav-actions">
+      <% if (authUser) { %>
+        <form action="/logout" method="post">
+          <button type="submit" class="btn btn-sm">Logout</button>
+        </form>
+      <% } else { %>
+        <a href="/login" class="btn btn-sm">Login</a>
+        <a href="/register" class="btn btn-sm btn-primary">Register</a>
+      <% } %>
+    </div>
   </div>
 </header>
