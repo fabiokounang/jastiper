@@ -3,26 +3,35 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'Checkout',
-          subtitle: 'Complete shipping details and payment method.',
+          subtitle: 'Finalize receiver, shipping, and payment preferences.',
           actions: [{ label: 'Back to Cart', href: '/cart', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card">
-            <h3>Checkout Form (Stage 4)</h3>
-            <p>Receiver info, shipping address, notes, and payment method.</p>
+          <article class="card cozy">
+            <h3>Shipping + Receiver</h3>
+            <p>
+              Stage 4 will render complete checkout form fields: receiver, phone, address,
+              province, city, postal code, and notes.
+            </p>
           </article>
+
           <article class="card subtle">
-            <h3>Payment Preparation (Stage 5)</h3>
-            <p>QRIS and MNC callback architecture will be connected here.</p>
+            <h3>Payment Handshake</h3>
+            <p>
+              Stage 5 will connect payment method selection, QRIS placeholder flow, and callback
+              status synchronization.
+            </p>
           </article>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>

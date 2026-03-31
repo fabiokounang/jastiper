@@ -1,10 +1,22 @@
-<% if (flash && flash.success && flash.success.length) { %>
-  <div class="alert success" role="status" aria-live="polite">
-    <strong>Success:</strong> <%= flash.success[0] %>
-  </div>
-<% } %>
-<% if (flash && flash.error && flash.error.length) { %>
-  <div class="alert error" role="alert">
-    <strong>Error:</strong> <%= flash.error[0] %>
-  </div>
+<% if ((flash && flash.success && flash.success.length) || (flash && flash.error && flash.error.length)) { %>
+  <section class="flash-stack">
+    <% if (flash.success && flash.success.length) { %>
+      <div class="flash flash-success" role="status" aria-live="polite">
+        <span class="flash-icon">✓</span>
+        <div>
+          <p class="flash-title">Success</p>
+          <p class="flash-text"><%= flash.success[0] %></p>
+        </div>
+      </div>
+    <% } %>
+    <% if (flash.error && flash.error.length) { %>
+      <div class="flash flash-error" role="alert">
+        <span class="flash-icon">!</span>
+        <div>
+          <p class="flash-title">Something needs attention</p>
+          <p class="flash-text"><%= flash.error[0] %></p>
+        </div>
+      </div>
+    <% } %>
+  </section>
 <% } %>

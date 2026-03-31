@@ -4,11 +4,17 @@
   <body>
     <div class="auth-shell">
       <section class="auth-left">
-        <a href="/" class="brand auth-brand">Jastip Platform</a>
-        <h1>Create your account</h1>
+        <a href="/" class="brand auth-brand">
+          <span class="brand-mark">J</span>
+          <span class="brand-text">
+            <span class="brand-name">Jastip Platform</span>
+            <small class="brand-tagline">Verified and secure onboarding</small>
+          </span>
+        </a>
+        <h1>Create account</h1>
         <p>
-          Register as buyer or jastiper with KTP data so the platform remains trusted and
-          secure.
+          Register as buyer or jastiper with KTP identity so transactions remain safer for all
+          users.
         </p>
       </section>
 
@@ -16,6 +22,7 @@
         <div class="card auth-card cozy">
           <h2>Register</h2>
           <%- include('../partials/flash') %>
+
           <form action="/register" method="post" enctype="multipart/form-data" class="form-grid two-col">
             <div class="span-2">
               <label for="full_name">Full Name</label>
@@ -62,7 +69,8 @@
 
             <button type="submit" class="btn btn-primary full span-2">Create Account</button>
           </form>
-          <p class="muted center">Already registered? <a href="/login">Back to login</a></p>
+
+          <p class="muted center">Already have account? <a href="/login">Back to login</a></p>
         </div>
       </section>
     </div>

@@ -3,14 +3,15 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'Admin Dashboard',
-          subtitle: 'Monitor users, trips, products, orders, and payments platform-wide.',
+          subtitle: 'Observe platform health, business metrics, and risk signals in one screen.',
           actions: [
-            { label: 'View Users', href: '/admin/users', variant: 'primary' },
-            { label: 'Open Reports', href: '/admin/reports', variant: 'secondary' }
+            { label: 'User Monitoring', href: '/admin/users', variant: 'primary' },
+            { label: 'Reports', href: '/admin/reports', variant: 'secondary' }
           ]
         }) %>
 
@@ -22,11 +23,15 @@
         </section>
 
         <section class="card cozy section-gap">
-          <h3>Stage 6 Monitoring</h3>
-          <p>Real KPI cards, trends, pending verification queues, and moderation controls.</p>
+          <h3>Stage 6 Monitoring Map</h3>
+          <p>
+            Verification queue, top destinations, payment success rate, and moderation actions
+            will be connected to this dashboard.
+          </p>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>

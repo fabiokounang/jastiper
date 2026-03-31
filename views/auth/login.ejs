@@ -4,13 +4,21 @@
   <body>
     <div class="auth-shell">
       <section class="auth-left">
-        <a href="/" class="brand auth-brand">Jastip Platform</a>
+        <a href="/" class="brand auth-brand">
+          <span class="brand-mark">J</span>
+          <span class="brand-text">
+            <span class="brand-name">Jastip Platform</span>
+            <small class="brand-tagline">Trusted cross-border shopping</small>
+          </span>
+        </a>
         <h1>Welcome back</h1>
-        <p>Log in to continue managing trips, orders, and your account activity.</p>
+        <p>
+          Sign in to continue your workflow with a cleaner and cozy dashboard experience.
+        </p>
         <ul class="list-clean">
-          <li>Secure session-based login</li>
+          <li>Secure session login</li>
           <li>Role-based dashboard access</li>
-          <li>Fast and mobile-friendly interface</li>
+          <li>Simple and mobile-friendly interface</li>
         </ul>
       </section>
 
@@ -18,6 +26,7 @@
         <div class="card auth-card cozy">
           <h2>Login</h2>
           <%- include('../partials/flash') %>
+
           <form action="/login" method="post" class="form-grid">
             <div>
               <label for="email">Email</label>
@@ -26,14 +35,13 @@
 
             <div>
               <label for="password">Password</label>
-              <input id="password" type="password" name="password" placeholder="********" required />
+              <input id="password" type="password" name="password" placeholder="Enter your password" required />
             </div>
 
             <button type="submit" class="btn btn-primary full">Login</button>
           </form>
-          <p class="muted center">
-            No account yet? <a href="/register">Create one now</a>
-          </p>
+
+          <p class="muted center">No account yet? <a href="/register">Create one now</a></p>
         </div>
       </section>
     </div>

@@ -3,26 +3,28 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'Your Cart',
-          subtitle: 'Review selected products before checkout.',
+          subtitle: 'Review chosen products before confirming checkout.',
           actions: [{ label: 'Continue Browsing', href: '/', variant: 'secondary' }]
         }) %>
 
         <section class="card cozy">
           <div class="empty-state">
-            <h3>Cart module is ready for Stage 4</h3>
+            <h3>Cart UI is now prepared for Stage 4</h3>
             <p>
-              Quantity updates, variant selection, notes, and cart totals will be handled in
-              the next implementation stage.
+              Quantity controls, variant notes, and dynamic total calculations will be connected
+              in the buyer flow implementation stage.
             </p>
             <a class="btn btn-primary" href="/checkout">Proceed to Checkout</a>
           </div>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>

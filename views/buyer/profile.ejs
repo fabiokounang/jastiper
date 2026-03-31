@@ -3,26 +3,28 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'Buyer Profile',
-          subtitle: 'Manage personal data and shipping preference.',
+          subtitle: 'Manage your account information and delivery addresses comfortably.',
           actions: [{ label: 'Back to Dashboard', href: '/buyer/dashboard', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card">
-            <h3>Account Details</h3>
-            <p>Full name, phone, city, and profile updates.</p>
+          <article class="card cozy">
+            <h3>Personal Details</h3>
+            <p>Name, phone number, and city profile data for smoother checkout steps.</p>
           </article>
           <article class="card subtle">
             <h3>Shipping Addresses</h3>
-            <p>Multiple addresses with default selection for faster checkout.</p>
+            <p>Support multiple addresses and choose a default destination per checkout.</p>
           </article>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>

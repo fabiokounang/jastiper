@@ -3,26 +3,28 @@
   <%- include('../partials/head', { title }) %>
   <body>
     <%- include('../partials/header') %>
+
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
           title: 'Jastiper Profile',
-          subtitle: 'Edit your shop identity, social links, and contact details.',
+          subtitle: 'Keep your shop identity and payout profile complete for buyer trust.',
           actions: [{ label: 'Back to Dashboard', href: '/jastiper/dashboard', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card">
-            <h3>Shop Information</h3>
-            <p>Shop name, bio, Instagram username, and profile photo.</p>
+          <article class="card cozy">
+            <h3>Shop Identity</h3>
+            <p>Shop name, profile photo, bio, and Instagram account for social credibility.</p>
           </article>
           <article class="card subtle">
-            <h3>Bank Details</h3>
-            <p>Optional payout account information for payment disbursement.</p>
+            <h3>Bank Information</h3>
+            <p>Optional payout information for easier transaction settlement flow.</p>
           </article>
         </section>
       </div>
     </main>
+
     <%- include('../partials/footer') %>
   </body>
 </html>
