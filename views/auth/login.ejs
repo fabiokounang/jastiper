@@ -29,7 +29,14 @@
           <form action="/login" method="post" class="form-grid">
             <div>
               <label for="email">Email</label>
-              <input id="email" type="email" name="email" placeholder="you@email.com" required />
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="you@email.com"
+                value="<%= formData && formData.email ? formData.email : '' %>"
+                required
+              />
             </div>
             <div>
               <label for="password">Password</label>
@@ -37,6 +44,9 @@
             </div>
             <button type="submit" class="btn btn-primary full">Login</button>
           </form>
+          <% if (typeof loginError !== 'undefined' && loginError) { %>
+            <p class="muted center" style="color:#b3261e;"><%= loginError %></p>
+          <% } %>
           <p class="muted center">Do not have account? <a href="/register">Register now</a></p>
         </div>
       </section>
