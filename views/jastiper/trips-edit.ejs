@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', { title }) %>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          eyebrow: 'Jastiper',
+          title: 'Edit Trip',
+          subtitle: 'Adjust schedule, destination, and publication status.',
+          actions: [{ label: 'Back to Trips', href: '/jastiper/trips', variant: 'secondary' }]
+        }) %>
+
+        <%- include('../partials/flash') %>
+        <% if (formError) { %>
+          <div class="flash flash-error" role="alert">
+            <span>Error</span>
+            <p><%= formError %></p>
+          </div>
+        <% } %>
+
+        <section class="card cozy">
+          <form action="/jastiper/trips/<%= trip.id %>?_method=PUT" method="post" enctype="multipart/form-data" class="form-grid two-col">
+            <div class="span-2">
+              <label for="title">Trip title</label>
+              <input id="title" name="title" type="text" required value="<%= trip.title %>" />
+            </div>
+
+            <div>
+              <label for="slug">Slug</label>
+              <input id="slug" name="slug" type="text" value="<%= trip.slug %>" />
+            </div>
+
+            <div>
+              <label for="currency">Currency</label>
+              <input id="currency" name="currency" type="text" value="<%= trip.currency %>" />
+            </div>
+
+            <div>
+              <label for="destination_country">Destination country</label>
+              <input id="destination_country" name="destination_country" type="text" required value="<%= trip.destination_country %>" />
+            </div>
+
+            <div>
+              <label for="destination_city">Destination city</label>
+              <input id="destination_city" name="destination_city" type="text" required value="<%= trip.destination_city %>" />
+            </div>
+
+            <div>
+              <label for="start_date">Start date</label>
+              <input id="start_date" name="start_date" type="date" required value="<%= trip.start_date || '' %>" />
+            </div>
+
+            <div>
+              <label for="end_date">End date</label>
+              <input id="end_date" name="end_date" type="date" required value="<%= trip.end_date || '' %>" />
+            </div>
+
+            <div>
+              <label for="estimated_arrival_date">Estimated arrival date</label>
+              <input id="estimated_arrival_date" name="estimated_arrival_date" type="date" value="<%= trip.estimated_arrival_date || '' %>" />
+            </div>
+
+            <div>
+              <label for="order_deadline">Order deadline</label>
+              <input id="order_deadline" name="order_deadline" type="datetime-local" value="<%= trip.order_deadline || '' %>" />
+            </div>
+
+            <div class="span-2">
+              <label for="jastip_fee_policy">Jastip fee policy</label>
+              <textarea id="jastip_fee_policy" name="jastip_fee_policy" rows="3"><%= trip.jastip_fee_policy || '' %></textarea>
+            </div>
+
+            <div class="span-2">
+              <label for="description">Description</label>
+              <textarea id="description" name="description" rows="4"><%= trip.description || '' %></textarea>
+            </div>
+
+            <div class="span-2">
+              <label for="notes">Notes</label>
+              <textarea id="notes" name="notes" rows="3"><%= trip.notes || '' %></textarea>
+            </div>
+
+            <div>
+              <label for="status">Status</label>
+              <select id="status" name="status">
+                <% ['draft', 'published', 'active', 'closed', 'completed'].forEach((status) => { %>
+                  <option value="<%= status %>" <%= trip.status === status ? 'selected' : '' %>><%= status %></option>
+                <% }) %>
+              </select>
+            </div>
+
+            <div>
+              <label for="cover_image">Cover image</label>
+              <input id="cover_image" name="cover_image" type="file" accept=".jpg,.jpeg,.png,.webp" />
+              <% if (trip.cover_image) { %>
+                <p class="muted">Current: <a href="<%= trip.cover_image %>" target="_blank" rel="noopener noreferrer">view image</a></p>
+              <% } %>
+            </div>
+
+            <div class="span-2 actions">
+              <button class="btn btn-primary" type="submit">Save Trip</button>
+              <a class="btn btn-ghost" href="/jastiper/trips">Cancel</a>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

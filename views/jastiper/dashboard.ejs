@@ -17,15 +17,19 @@
         }) %>
 
         <section class="stats-grid four-col">
-          <article class="card kpi-card"><p class="kpi">0</p><span>Draft Trips</span></article>
-          <article class="card kpi-card"><p class="kpi">0</p><span>Published Trips</span></article>
-          <article class="card kpi-card"><p class="kpi">0</p><span>Products</span></article>
-          <article class="card kpi-card"><p class="kpi">0</p><span>Active Orders</span></article>
+          <article class="card kpi-card"><p class="kpi"><%= summary.draft_trips %></p><span>Draft Trips</span></article>
+          <article class="card kpi-card"><p class="kpi"><%= summary.published_trips %></p><span>Published Trips</span></article>
+          <article class="card kpi-card"><p class="kpi"><%= summary.total_products %></p><span>Products</span></article>
+          <article class="card kpi-card"><p class="kpi"><%= summary.active_orders %></p><span>Active Orders</span></article>
         </section>
 
         <section class="card soft section-gap">
-          <h3>Stage 3 integration</h3>
-          <p class="muted">Trip CRUD, product CRUD, and order status actions will appear here.</p>
+          <h3>Stage 3 is active</h3>
+          <p class="muted">Use Trips to manage public links, products, and publishing workflow.</p>
+          <div class="actions">
+            <a href="/jastiper/trips" class="btn btn-ghost">Manage Trips</a>
+            <a href="/jastiper/products/create" class="btn btn-primary">Add Product</a>
+          </div>
         </section>
       </div>
     </main>

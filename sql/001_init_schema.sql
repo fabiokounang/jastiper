@@ -250,7 +250,10 @@ CREATE TABLE IF NOT EXISTS cart_items (
 CREATE TABLE IF NOT EXISTS orders (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   order_code VARCHAR(64) NOT NULL,
-  buyer_id BIGINT UNSIGNED NOT NULL,
+  buyer_id BIGINT UNSIGNED NULL,
+  guest_email VARCHAR(191) NULL,
+  guest_phone VARCHAR(30) NULL,
+  checkout_mode ENUM('guest', 'account') NOT NULL DEFAULT 'guest',
   jastiper_id BIGINT UNSIGNED NOT NULL,
   trip_id BIGINT UNSIGNED NOT NULL,
   address_id BIGINT UNSIGNED NULL,
@@ -286,6 +289,9 @@ CREATE TABLE IF NOT EXISTS orders (
   PRIMARY KEY (id),
   UNIQUE KEY uq_orders_order_code (order_code),
   KEY idx_orders_buyer (buyer_id),
+  KEY idx_orders_guest_email (guest_email),
+  KEY idx_orders_guest_phone (guest_phone),
+  KEY idx_orders_checkout_mode (checkout_mode),
   KEY idx_orders_jastiper (jastiper_id),
   KEY idx_orders_trip (trip_id),
   KEY idx_orders_status (status),
@@ -293,7 +299,7 @@ CREATE TABLE IF NOT EXISTS orders (
   KEY idx_orders_created_at (created_at),
   CONSTRAINT fk_orders_buyer
     FOREIGN KEY (buyer_id) REFERENCES users (id)
-    ON DELETE RESTRICT ON UPDATE CASCADE,
+    ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT fk_orders_jastiper
     FOREIGN KEY (jastiper_id) REFERENCES users (id)
     ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -336,7 +342,9 @@ CREATE TABLE IF NOT EXISTS order_items (
 CREATE TABLE IF NOT EXISTS payments (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   order_id BIGINT UNSIGNED NOT NULL,
-  buyer_id BIGINT UNSIGNED NOT NULL,
+  buyer_id BIGINT UNSIGNED NULL,
+  payer_email VARCHAR(191) NULL,
+  payer_phone VARCHAR(30) NULL,
   payment_reference VARCHAR(128) NOT NULL,
   provider VARCHAR(80) NOT NULL DEFAULT 'MNC',
   payment_method VARCHAR(80) NOT NULL DEFAULT 'QRIS',
@@ -352,13 +360,15 @@ CREATE TABLE IF NOT EXISTS payments (
   UNIQUE KEY uq_payments_reference (payment_reference),
   KEY idx_payments_order (order_id),
   KEY idx_payments_buyer (buyer_id),
+  KEY idx_payments_payer_email (payer_email),
+  KEY idx_payments_payer_phone (payer_phone),
   KEY idx_payments_status (status),
   CONSTRAINT fk_payments_order
     FOREIGN KEY (order_id) REFERENCES orders (id)
     ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT fk_payments_buyer
     FOREIGN KEY (buyer_id) REFERENCES users (id)
-    ON DELETE RESTRICT ON UPDATE CASCADE
+    ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS payment_logs (

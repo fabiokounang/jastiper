@@ -7,15 +7,15 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
-          eyebrow: 'Buyer Flow',
+          eyebrow: 'Guest Checkout',
           title: 'Checkout',
-          subtitle: 'Finalize shipping details and payment preference.',
+          subtitle: 'Fill shipping and payment details without mandatory account registration.',
           actions: [{ label: 'Back to Cart', href: '/cart', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
           <article class="card cozy stack">
-            <h3>Shipping form</h3>
+            <h3>Guest shipping form</h3>
             <p class="muted">
               Receiver name, phone, address, city, postal code, and checkout notes are prepared
               for Stage 4.
@@ -26,6 +26,7 @@
             <h3>Payment area</h3>
             <p class="muted">
               QRIS/MNC architecture and callback status sync will be connected in Stage 5.
+              Buyer account creation will be optional after successful payment.
             </p>
           </article>
         </section>
