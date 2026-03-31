@@ -4,7 +4,7 @@ module.exports = (err, req, res, _next) => {
 
   if (err.message && err.message.includes("Only JPG")) {
     req.flash("error", err.message);
-    return res.redirect("back");
+    return res.redirect(req.get("Referrer") || "/register");
   }
 
   return res.status(500).render("errors/500", {

@@ -23,18 +23,19 @@
           <%- include('../partials/flash') %>
 
           <form action="/register" method="post" enctype="multipart/form-data" class="form-grid two-col">
+            <p class="muted span-2" style="margin-bottom: 6px;">Fields marked required are mandatory for all roles. Jastiper extras are optional.</p>
             <div class="span-2">
               <label for="full_name">Full Name</label>
-              <input id="full_name" type="text" name="full_name" required />
+              <input id="full_name" type="text" name="full_name" value="<%= old.full_name || '' %>" required />
             </div>
 
             <div>
               <label for="email">Email</label>
-              <input id="email" type="email" name="email" required />
+              <input id="email" type="email" name="email" value="<%= old.email || '' %>" required />
             </div>
             <div>
               <label for="phone">Phone</label>
-              <input id="phone" type="text" name="phone" required />
+              <input id="phone" type="text" name="phone" value="<%= old.phone || '' %>" required />
             </div>
 
             <div>
@@ -49,13 +50,27 @@
             <div>
               <label for="role">Role</label>
               <select id="role" name="role" required>
-                <option value="buyer">Buyer</option>
-                <option value="jastiper">Jastiper</option>
+                <option value="buyer" <%= old.role === 'buyer' ? 'selected' : '' %>>Buyer</option>
+                <option value="jastiper" <%= old.role === 'jastiper' ? 'selected' : '' %>>Jastiper</option>
               </select>
             </div>
             <div>
               <label for="ktp_number">KTP Number</label>
-              <input id="ktp_number" type="text" name="ktp_number" required />
+              <input id="ktp_number" type="text" name="ktp_number" value="<%= old.ktp_number || '' %>" required />
+            </div>
+
+            <div class="span-2">
+              <label for="address">Address</label>
+              <textarea id="address" name="address" rows="3" required><%= old.address || '' %></textarea>
+            </div>
+
+            <div>
+              <label for="city">City</label>
+              <input id="city" type="text" name="city" value="<%= old.city || '' %>" required />
+            </div>
+            <div>
+              <label for="province">Province</label>
+              <input id="province" type="text" name="province" value="<%= old.province || '' %>" required />
             </div>
 
             <div class="span-2">
@@ -63,9 +78,49 @@
               <input id="ktp_photo" type="file" name="ktp_photo" accept="image/*" required />
             </div>
 
+            <div class="span-2">
+              <label for="selfie_with_ktp">Selfie with KTP (optional)</label>
+              <input id="selfie_with_ktp" type="file" name="selfie_with_ktp" accept="image/*" />
+            </div>
+
+            <div class="span-2">
+              <h3>Jastiper Extra Fields</h3>
+            </div>
+            <div>
+              <label for="shop_name">Shop Name</label>
+              <input id="shop_name" type="text" name="shop_name" value="<%= old.shop_name || '' %>" />
+            </div>
+            <div>
+              <label for="username_slug">Username / Public Slug</label>
+              <input id="username_slug" type="text" name="username_slug" value="<%= old.username_slug || '' %>" />
+            </div>
+            <div>
+              <label for="instagram_username">Instagram Username</label>
+              <input id="instagram_username" type="text" name="instagram_username" value="<%= old.instagram_username || '' %>" />
+            </div>
+            <div>
+              <label for="bio">Bio</label>
+              <input id="bio" type="text" name="bio" value="<%= old.bio || '' %>" />
+            </div>
+            <div>
+              <label for="bank_account_name">Bank Account Name</label>
+              <input id="bank_account_name" type="text" name="bank_account_name" value="<%= old.bank_account_name || '' %>" />
+            </div>
+            <div>
+              <label for="bank_account_number">Bank Account Number</label>
+              <input id="bank_account_number" type="text" name="bank_account_number" value="<%= old.bank_account_number || '' %>" />
+            </div>
+            <div class="span-2">
+              <label for="bank_name">Bank Name</label>
+              <input id="bank_name" type="text" name="bank_name" value="<%= old.bank_name || '' %>" />
+            </div>
+
             <button type="submit" class="btn btn-primary full span-2">Create account</button>
           </form>
 
+          <p class="muted center" style="font-size:0.86rem;">
+            * Extra jastiper fields are optional for buyer registration.
+          </p>
           <p class="muted center">Already registered? <a href="/login">Back to login</a></p>
         </div>
       </section>
