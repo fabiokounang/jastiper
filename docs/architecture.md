@@ -4,6 +4,9 @@
 
 - One Express app (`app.js`) serves public + admin + jastiper + buyer routes.
 - One MySQL database (`jastip_platform`) stores all entities.
+- Buyer conversion strategy is **guest-first checkout**:
+  - browsing and checkout can be completed without account registration
+  - buyer account creation is optional and can be offered after successful checkout/payment
 - Role isolation is done via middleware and route namespaces:
   - `/admin/*`
   - `/jastiper/*`
@@ -63,6 +66,8 @@ index.js
 - `GET /buyer/orders/:id`
 - `GET /buyer/payments`
 
+> Note: `/buyer/*` routes are for optional account users. Core checkout flow remains available for guests.
+
 ### Admin
 - `GET /admin/dashboard`
 - `GET /admin/users`
@@ -94,8 +99,12 @@ index.js
 - `product_images` and `product_variants` belong to product.
 - `carts` belongs to buyer; `cart_items` belong to cart.
 - `orders` connects buyer, jastiper, trip, and shipping snapshot.
+- `orders.buyer_id` is nullable to support guest checkout. Guest identity can be stored in
+  `guest_email` and `guest_phone`.
 - `order_items` stores immutable item snapshots per order.
 - `payments` belongs to order and buyer; `payment_logs` stores callback history.
+- `payments.buyer_id` is nullable for guest payers; guest payment identity can be stored in
+  `payer_email` and `payer_phone`.
 - `addresses` stores buyer addresses.
 - `activity_logs` stores audit trails across entities.
 - `admin_notes` stores internal moderation annotations.

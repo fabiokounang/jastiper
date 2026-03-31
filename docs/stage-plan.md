@@ -53,8 +53,11 @@ This project is built as **one Node.js + Express + EJS + MySQL application** wit
 - validators in `middleware` or `utils/validators`
 
 ### Routes
-- `POST /register`, `POST /login`, `POST /logout`
+- `POST /register`, `POST /login`, `POST /logout` (account flow, mainly for jastiper and optional buyer account)
 - optional: `GET /verification/status`
+- guest-first strategy note:
+  - buyers can continue checkout as guest in Stage 4
+  - buyer account becomes optional for faster repeat checkout and order history
 
 ### SQL tables involved
 - `users`, `user_profiles`, `user_verifications`, `activity_logs`
@@ -85,9 +88,11 @@ This project is built as **one Node.js + Express + EJS + MySQL application** wit
 - `/trip/:slug`, `/trip/:slug/product/:productSlug`
 - `/cart` CRUD actions
 - `/checkout` submit order
+- optional account route after checkout success (`/register?from=checkout` or lightweight account claim flow)
 
 ### SQL tables involved
 - `carts`, `cart_items`, `orders`, `order_items`, `addresses`, `products`, `trips`
+- with guest-first fields in `orders` (`checkout_mode`, `guest_email`, `guest_phone`)
 
 ---
 

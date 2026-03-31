@@ -9,7 +9,7 @@
         <%- include('../partials/page-header', {
           eyebrow: 'Public View',
           title: 'Product Detail',
-          subtitle: 'Simple and readable product context for buyers.',
+          subtitle: 'Simple and readable product context for buyers (no login needed).',
           actions: [{ label: 'Back to Trip', href: '/trip/' + slug, variant: 'secondary' }]
         }) %>
 
@@ -22,6 +22,7 @@
             <p class="muted">
               Stage 4 will add gallery, variants, pricing estimate, and add-to-cart action.
             </p>
+            <p class="muted">Checkout remains guest-friendly and will only ask shipping/payment info.</p>
           </article>
 
           <article class="card stack">

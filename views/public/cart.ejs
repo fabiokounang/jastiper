@@ -7,9 +7,9 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
-          eyebrow: 'Buyer Flow',
+          eyebrow: 'Guest-First Buyer Flow',
           title: 'Shopping Cart',
-          subtitle: 'Review selected items before payment.',
+          subtitle: 'Review selected items before guest checkout or optional login.',
           actions: [{ label: 'Continue Browsing', href: '/', variant: 'secondary' }]
         }) %>
 
@@ -18,7 +18,7 @@
             <h3>Cart interaction will be active in Stage 4</h3>
             <p>
               Quantity control, variants, notes, and cart totals will be connected in buyer
-              module implementation.
+              module implementation with guest-first checkout.
             </p>
             <div class="actions">
               <a class="btn btn-primary" href="/checkout">Go to Checkout</a>
