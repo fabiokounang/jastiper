@@ -7,8 +7,9 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
-          title: 'Jastiper Dashboard',
-          subtitle: 'Manage trips, products, and order updates from a single cozy workspace.',
+          eyebrow: 'Jastiper',
+          title: 'Dashboard',
+          subtitle: 'Monitor your trips, products, and active order activity.',
           actions: [
             { label: 'Create Trip', href: '/jastiper/trips/create', variant: 'primary' },
             { label: 'Orders', href: '/jastiper/orders', variant: 'secondary' }
@@ -22,9 +23,9 @@
           <article class="card kpi-card"><p class="kpi">0</p><span>Active Orders</span></article>
         </section>
 
-        <section class="card cozy section-gap">
-          <h3>Next Build: Stage 3</h3>
-          <p>Trip CRUD, product CRUD, and order status timeline will be activated here.</p>
+        <section class="card soft section-gap">
+          <h3>Stage 3 integration</h3>
+          <p class="muted">Trip CRUD, product CRUD, and order status actions will appear here.</p>
         </section>
       </div>
     </main>

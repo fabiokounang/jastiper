@@ -1,16 +1,16 @@
-<section class="page-header card glass-card">
+<section class="page-header card soft">
   <div class="page-header-main">
-    <p class="eyebrow"><%= typeof eyebrow !== "undefined" ? eyebrow : "Overview" %></p>
+    <p class="eyebrow"><%= typeof eyebrow !== 'undefined' ? eyebrow : 'Overview' %></p>
     <h1><%= title %></h1>
     <% if (subtitle) { %>
       <p class="muted"><%= subtitle %></p>
     <% } %>
   </div>
   <% if (actions && actions.length) { %>
-    <div class="toolbar">
+    <div class="page-header-actions">
       <% actions.forEach((action) => { %>
         <a
-          class="btn <%= action.variant === 'primary' ? 'btn-primary' : 'btn-secondary' %>"
+          class="btn <%= action.variant === 'primary' ? 'btn-primary' : 'btn-ghost' %>"
           href="<%= action.href %>"
           ><%= action.label %></a
         >

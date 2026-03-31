@@ -4,44 +4,40 @@
   <body>
     <div class="auth-shell">
       <section class="auth-left">
-        <a href="/" class="brand auth-brand">
-          <span class="brand-mark">J</span>
-          <span class="brand-text">
-            <span class="brand-name">Jastip Platform</span>
-            <small class="brand-tagline">Trusted cross-border shopping</small>
+        <a href="/" class="brand">
+          <span class="brand-icon">J</span>
+          <span class="brand-copy">
+            <strong>Jastip Platform</strong>
+            <small>Secure sign in experience</small>
           </span>
         </a>
         <h1>Welcome back</h1>
-        <p>
-          Sign in to continue your workflow with a cleaner and cozy dashboard experience.
+        <p class="muted">
+          Continue your journey with a cleaner and easier account experience.
         </p>
         <ul class="list-clean">
-          <li>Secure session login</li>
+          <li>Session-based secure login</li>
           <li>Role-based dashboard access</li>
-          <li>Simple and mobile-friendly interface</li>
+          <li>Mobile-friendly interaction</li>
         </ul>
       </section>
 
       <section class="auth-right">
-        <div class="card auth-card cozy">
+        <div class="card soft auth-card stack">
           <h2>Login</h2>
           <%- include('../partials/flash') %>
-
           <form action="/login" method="post" class="form-grid">
             <div>
               <label for="email">Email</label>
               <input id="email" type="email" name="email" placeholder="you@email.com" required />
             </div>
-
             <div>
               <label for="password">Password</label>
               <input id="password" type="password" name="password" placeholder="Enter your password" required />
             </div>
-
             <button type="submit" class="btn btn-primary full">Login</button>
           </form>
-
-          <p class="muted center">No account yet? <a href="/register">Create one now</a></p>
+          <p class="muted center">Do not have account? <a href="/register">Register now</a></p>
         </div>
       </section>
     </div>

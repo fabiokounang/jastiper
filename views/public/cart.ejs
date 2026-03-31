@@ -7,19 +7,22 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
-          title: 'Your Cart',
-          subtitle: 'Review chosen products before confirming checkout.',
+          eyebrow: 'Buyer Flow',
+          title: 'Shopping Cart',
+          subtitle: 'Review selected items before payment.',
           actions: [{ label: 'Continue Browsing', href: '/', variant: 'secondary' }]
         }) %>
 
         <section class="card cozy">
           <div class="empty-state">
-            <h3>Cart UI is now prepared for Stage 4</h3>
+            <h3>Cart interaction will be active in Stage 4</h3>
             <p>
-              Quantity controls, variant notes, and dynamic total calculations will be connected
-              in the buyer flow implementation stage.
+              Quantity control, variants, notes, and cart totals will be connected in buyer
+              module implementation.
             </p>
-            <a class="btn btn-primary" href="/checkout">Proceed to Checkout</a>
+            <div class="actions">
+              <a class="btn btn-primary" href="/checkout">Go to Checkout</a>
+            </div>
           </div>
         </section>
       </div>

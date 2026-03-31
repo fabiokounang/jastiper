@@ -4,15 +4,17 @@
   <body>
     <main class="page-shell">
       <div class="container small">
-        <section class="card cozy">
+        <section class="card soft stack">
           <h1>Validation issue</h1>
-          <p class="muted">Please fix the form fields below and submit again.</p>
+          <p class="muted">Please review these fields and submit the form again.</p>
           <ul class="list-clean">
             <% errors.forEach((error) => { %>
               <li><strong><%= error.path %></strong>: <%= error.msg %></li>
             <% }) %>
           </ul>
-          <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+          <div class="actions">
+            <a href="javascript:history.back()" class="btn btn-ghost">Go Back</a>
+          </div>
         </section>
       </div>
     </main>
