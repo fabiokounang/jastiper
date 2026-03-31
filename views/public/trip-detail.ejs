@@ -8,28 +8,61 @@
       <div class="container">
         <%- include('../partials/page-header', {
           eyebrow: 'Public View',
-          title: 'Trip Page',
-          subtitle: 'Public buyer-friendly overview with no login required.',
+          title: trip.title,
+          subtitle: 'Browse published products and checkout as guest.',
           actions: [{ label: 'Back Home', href: '/', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
           <article class="card cozy stack">
-            <h3>Trip slug</h3>
-            <p class="mono">/<%= slug %></p>
+            <h3>Trip Information</h3>
             <p class="muted">
-              Stage 4 will display destination details, deadline, and published product list.
+              <strong>Destination:</strong> <%= trip.destination_city %>, <%= trip.destination_country %>
             </p>
+            <p class="muted"><strong>Start:</strong> <%= trip.start_date ? new Date(trip.start_date).toISOString().slice(0, 10) : '-' %></p>
+            <p class="muted"><strong>End:</strong> <%= trip.end_date ? new Date(trip.end_date).toISOString().slice(0, 10) : '-' %></p>
+            <p class="muted"><strong>Order Deadline:</strong> <%= trip.order_deadline ? new Date(trip.order_deadline).toISOString().slice(0, 10) : '-' %></p>
+            <p class="muted"><strong>Currency:</strong> <%= trip.currency %></p>
+            <p class="mono">/<%= slug %></p>
+            <% if (trip.description) { %>
+              <p class="muted"><%= trip.description %></p>
+            <% } %>
           </article>
 
           <article class="card stack">
-            <h3>Buyer journey</h3>
-            <ul class="list-clean">
-              <li>Read trip information and notes</li>
-              <li>Open product details</li>
-              <li>Add to cart and continue checkout</li>
-            </ul>
+            <h3>Jastiper</h3>
+            <p class="muted"><strong>Name:</strong> <%= trip.full_name || '-' %></p>
+            <p class="muted"><strong>Shop:</strong> <%= trip.shop_name || '-' %></p>
+            <p class="muted"><strong>Instagram:</strong> <%= trip.instagram_username ? '@' + trip.instagram_username : '-' %></p>
+            <% if (trip.notes) { %>
+              <p class="muted"><strong>Notes:</strong> <%= trip.notes %></p>
+            <% } %>
           </article>
+        </section>
+
+        <section class="card soft section-gap stack">
+          <h3>Published Products</h3>
+          <% if (!products || products.length === 0) { %>
+            <div class="empty-state">
+              <p>No products are published for this trip yet.</p>
+            </div>
+          <% } else { %>
+            <div class="stats-grid two-col">
+              <% products.forEach((product) => { %>
+                <article class="card stack">
+                  <h3><%= product.name %></h3>
+                  <p class="muted"><strong>Status:</strong> <%= product.product_status %></p>
+                  <p class="muted"><strong>Est. Price:</strong> <%= product.currency %> <%= Number(product.final_price_estimate || 0).toLocaleString('en-US') %></p>
+                  <p class="muted"><strong>Stock:</strong> <%= product.stock %></p>
+                  <div class="actions">
+                    <a class="btn btn-ghost btn-sm" href="/trip/<%= trip.slug %>/product/<%= product.slug %>">
+                      View Product
+                    </a>
+                  </div>
+                </article>
+              <% }) %>
+            </div>
+          <% } %>
         </section>
       </div>
     </main>

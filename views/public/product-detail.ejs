@@ -8,30 +8,55 @@
       <div class="container">
         <%- include('../partials/page-header', {
           eyebrow: 'Public View',
-          title: 'Product Detail',
-          subtitle: 'Simple and readable product context for buyers (no login needed).',
+          title: product.name,
+          subtitle: 'Buyer-friendly detail page with transparent pricing and notes.',
           actions: [{ label: 'Back to Trip', href: '/trip/' + slug, variant: 'secondary' }]
         }) %>
+        <%- include('../partials/flash') %>
 
         <section class="grid two-col">
           <article class="card cozy stack">
-            <h3>Trip</h3>
-            <p class="mono"><%= slug %></p>
-            <h3>Product</h3>
-            <p class="mono"><%= productSlug %></p>
-            <p class="muted">
-              Stage 4 will add gallery, variants, pricing estimate, and add-to-cart action.
-            </p>
-            <p class="muted">Checkout remains guest-friendly and will only ask shipping/payment info.</p>
+            <% if (product.primary_image) { %>
+              <img
+                src="<%= product.primary_image %>"
+                alt="<%= product.name %>"
+                style="width:100%; border-radius:12px; border:1px solid #dce4f1"
+              />
+            <% } %>
+            <h3><%= product.name %></h3>
+            <p class="muted"><%= product.description || 'No product description yet.' %></p>
+            <div class="stack">
+              <p><strong>Estimated price:</strong> <%= product.currency %> <%= Number(product.final_price_estimate || 0).toLocaleString('id-ID') %></p>
+              <p><strong>Base + fee:</strong> <%= product.currency %> <%= Number(product.base_price || 0).toLocaleString('id-ID') %> + <%= Number(product.jastip_fee || 0).toLocaleString('id-ID') %></p>
+              <p><strong>Stock:</strong> <%= Number(product.stock || 0) %></p>
+              <p><strong>Status:</strong> <%= product.product_status %></p>
+            </div>
           </article>
 
           <article class="card stack">
-            <h3>Planned information</h3>
+            <h3>Product details</h3>
             <ul class="list-clean">
-              <li>Base price + jastip fee</li>
-              <li>Variant and stock</li>
-              <li>Purchase location notes</li>
+              <li><strong>Trip:</strong> <%= trip.title %></li>
+              <li><strong>Category:</strong> <%= product.category || '-' %></li>
+              <li><strong>Brand:</strong> <%= product.brand || '-' %></li>
+              <li><strong>Availability:</strong> <%= product.availability_status %></li>
+              <li><strong>Preorder:</strong> <%= product.preorder_type || '-' %></li>
+              <li><strong>Purchase location:</strong> <%= product.purchase_location || '-' %></li>
             </ul>
+            <% if (images && images.length > 1) { %>
+              <div class="grid two-col">
+                <% images.forEach((image) => { %>
+                  <img
+                    src="<%= image.image_path %>"
+                    alt="Product image"
+                    style="width:100%; border-radius:10px; border:1px solid #dce4f1"
+                  />
+                <% }) %>
+              </div>
+            <% } %>
+            <p class="muted">
+              Guest-first checkout stays enabled. Buyer account can be created optionally after payment.
+            </p>
           </article>
         </section>
       </div>

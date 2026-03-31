@@ -26,6 +26,16 @@ module.exports = (req, res, next) => {
     });
   }
 
+  if (
+    req.originalUrl.includes("/jastiper/trips/create") ||
+    req.originalUrl.includes("/jastiper/trips/") ||
+    req.originalUrl.includes("/jastiper/products/create") ||
+    req.originalUrl.includes("/jastiper/products/")
+  ) {
+    req.flash("error", errors.array()[0].msg);
+    return res.redirect("back");
+  }
+
   return res.status(422).render("errors/422", {
     title: "Validation Error",
     errors: errors.array(),

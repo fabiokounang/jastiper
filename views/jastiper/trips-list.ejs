@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', { title }) %>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/flash') %>
+        <%- include('../partials/page-header', {
+          eyebrow: 'Jastiper',
+          title: 'My Trips',
+          subtitle: 'Create, publish, close, and duplicate your trip links.',
+          actions: [{ label: 'Create Trip', href: '/jastiper/trips/create', variant: 'primary' }]
+        }) %>
+
+        <% if (!trips || !trips.length) { %>
+          <section class="card cozy empty-state">
+            <h3>No trip yet</h3>
+            <p class="muted">Create your first trip and start adding products.</p>
+          </section>
+        <% } else { %>
+          <section class="grid two-col">
+            <% trips.forEach((trip) => { %>
+              <article class="card stack">
+                <span class="badge"><%= trip.status %></span>
+                <h3><%= trip.title %></h3>
+                <p class="muted"><%= trip.destination_city %>, <%= trip.destination_country %></p>
+                <p class="muted">Products: <strong><%= trip.product_count %></strong></p>
+                <p class="muted">
+                  Public URL:
+                  <a href="/trip/<%= trip.slug %>" target="_blank" rel="noopener noreferrer"
+                    >/trip/<%= trip.slug %></a
+                  >
+                </p>
+
+                <div class="actions">
+                  <a class="btn btn-ghost btn-sm" href="/jastiper/trips/<%= trip.id %>/edit">Edit</a>
+                  <a class="btn btn-ghost btn-sm" href="/jastiper/trips/<%= trip.id %>/products">Products</a>
+                </div>
+
+                <div class="actions">
+                  <% if (trip.status !== 'published' && trip.status !== 'active') { %>
+                    <form method="post" action="/jastiper/trips/<%= trip.id %>/publish">
+                      <button class="btn btn-primary btn-sm" type="submit">Publish</button>
+                    </form>
+                  <% } else { %>
+                    <form method="post" action="/jastiper/trips/<%= trip.id %>/unpublish">
+                      <button class="btn btn-ghost btn-sm" type="submit">Unpublish</button>
+                    </form>
+                  <% } %>
+
+                  <% if (trip.status !== 'closed' && trip.status !== 'completed') { %>
+                    <form method="post" action="/jastiper/trips/<%= trip.id %>/close">
+                      <button class="btn btn-ghost btn-sm" type="submit">Close</button>
+                    </form>
+                  <% } %>
+
+                  <form method="post" action="/jastiper/trips/<%= trip.id %>/duplicate">
+                    <button class="btn btn-ghost btn-sm" type="submit">Duplicate</button>
+                  </form>
+                </div>
+
+                <form method="post" action="/jastiper/trips/<%= trip.id %>?_method=DELETE">
+                  <button class="btn btn-ghost btn-sm" type="submit">Delete</button>
+                </form>
+              </article>
+            <% }) %>
+          </section>
+        <% } %>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

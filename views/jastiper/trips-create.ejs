@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', { title }) %>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          eyebrow: 'Jastiper',
+          title: 'Create Trip',
+          subtitle: 'Add a new trip, then publish it when products are ready.',
+          actions: [{ label: 'Back to Trips', href: '/jastiper/trips', variant: 'secondary' }]
+        }) %>
+        <%- include('../partials/flash') %>
+
+        <% if (formError) { %>
+          <div class="flash flash-error" role="alert">
+            <span>Error</span>
+            <p><%= formError %></p>
+          </div>
+        <% } %>
+
+        <section class="card soft stack">
+          <form action="/jastiper/trips" method="post" enctype="multipart/form-data" class="form-grid two-col">
+            <div>
+              <label for="title">Trip Title</label>
+              <input id="title" name="title" value="<%= old.title %>" required />
+            </div>
+
+            <div>
+              <label for="slug">Slug (optional)</label>
+              <input id="slug" name="slug" value="<%= old.slug %>" />
+            </div>
+
+            <div>
+              <label for="destination_country">Destination Country</label>
+              <input
+                id="destination_country"
+                name="destination_country"
+                value="<%= old.destination_country %>"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="destination_city">Destination City</label>
+              <input id="destination_city" name="destination_city" value="<%= old.destination_city %>" required />
+            </div>
+
+            <div>
+              <label for="start_date">Start Date</label>
+              <input id="start_date" name="start_date" type="date" value="<%= old.start_date %>" required />
+            </div>
+
+            <div>
+              <label for="end_date">End Date</label>
+              <input id="end_date" name="end_date" type="date" value="<%= old.end_date %>" required />
+            </div>
+
+            <div>
+              <label for="estimated_arrival_date">Estimated Arrival</label>
+              <input
+                id="estimated_arrival_date"
+                name="estimated_arrival_date"
+                type="date"
+                value="<%= old.estimated_arrival_date %>"
+              />
+            </div>
+
+            <div>
+              <label for="order_deadline">Order Deadline</label>
+              <input id="order_deadline" name="order_deadline" type="datetime-local" value="<%= old.order_deadline %>" />
+            </div>
+
+            <div>
+              <label for="currency">Currency</label>
+              <input id="currency" name="currency" value="<%= old.currency %>" maxlength="10" />
+            </div>
+
+            <div>
+              <label for="status">Status</label>
+              <select id="status" name="status">
+                <% ['draft', 'published', 'active', 'closed', 'completed'].forEach((status) => { %>
+                  <option value="<%= status %>" <%= old.status === status ? 'selected' : '' %>>
+                    <%= status %>
+                  </option>
+                <% }) %>
+              </select>
+            </div>
+
+            <div class="span-2">
+              <label for="cover_image">Cover Image (optional)</label>
+              <input id="cover_image" name="cover_image" type="file" accept="image/*" />
+            </div>
+
+            <div class="span-2">
+              <label for="description">Description</label>
+              <textarea id="description" name="description" rows="4"><%= old.description %></textarea>
+            </div>
+
+            <div class="span-2">
+              <label for="jastip_fee_policy">Jastip Fee Policy</label>
+              <textarea id="jastip_fee_policy" name="jastip_fee_policy" rows="3"><%= old.jastip_fee_policy %></textarea>
+            </div>
+
+            <div class="span-2">
+              <label for="notes">Notes</label>
+              <textarea id="notes" name="notes" rows="3"><%= old.notes %></textarea>
+            </div>
+
+            <div class="span-2 actions">
+              <button class="btn btn-primary" type="submit">Create Trip</button>
+              <a class="btn btn-ghost" href="/jastiper/trips">Cancel</a>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

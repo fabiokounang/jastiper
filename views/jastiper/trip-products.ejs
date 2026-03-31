@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', { title }) %>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/flash') %>
+
+        <%- include('../partials/page-header', {
+          eyebrow: 'Jastiper · Trip Products',
+          title: trip.title,
+          subtitle: 'Manage products inside this trip and control visibility status.',
+          actions: [
+            { label: 'Add Product', href: '/jastiper/products/create?trip_id=' + trip.id, variant: 'primary' },
+            { label: 'Back to Trips', href: '/jastiper/trips', variant: 'secondary' }
+          ]
+        }) %>
+
+        <section class="card subtle section-gap stack">
+          <p class="muted">
+            Public link:
+            <a href="/trip/<%= trip.slug %>" class="mono" target="_blank" rel="noopener noreferrer"
+              >/trip/<%= trip.slug %></a
+            >
+          </p>
+        </section>
+
+        <section class="section-gap">
+          <% if (!products.length) { %>
+            <article class="card cozy empty-state">
+              <h3>No products yet</h3>
+              <p class="muted">Add your first product to start receiving buyer interest.</p>
+              <div class="actions" style="justify-content:center; margin-top:12px">
+                <a class="btn btn-primary" href="/jastiper/products/create?trip_id=<%= trip.id %>"
+                  >Create Product</a
+                >
+              </div>
+            </article>
+          <% } else { %>
+            <div class="grid two-col">
+              <% products.forEach((product) => { %>
+                <article class="card stack">
+                  <div class="actions" style="justify-content:space-between; align-items:center">
+                    <div>
+                      <h3><%= product.name %></h3>
+                      <p class="muted">
+                        <%= product.category || 'General' %> · <%= product.product_status %>
+                      </p>
+                    </div>
+                    <span class="badge"><%= product.currency %> <%= Number(product.final_price_estimate || 0).toLocaleString('id-ID') %></span>
+                  </div>
+
+                  <p class="muted"><%= product.description || 'No description yet.' %></p>
+
+                  <div class="actions">
+                    <a class="btn btn-ghost btn-sm" href="/jastiper/products/<%= product.id %>/edit">Edit</a>
+                    <form action="/jastiper/products/<%= product.id %>/duplicate" method="post">
+                      <button class="btn btn-ghost btn-sm" type="submit">Duplicate</button>
+                    </form>
+                    <% if (product.product_status === 'published') { %>
+                      <form action="/jastiper/products/<%= product.id %>/hide" method="post">
+                        <button class="btn btn-ghost btn-sm" type="submit">Hide</button>
+                      </form>
+                    <% } else { %>
+                      <form action="/jastiper/products/<%= product.id %>/show" method="post">
+                        <button class="btn btn-ghost btn-sm" type="submit">Publish</button>
+                      </form>
+                    <% } %>
+                    <form action="/jastiper/products/<%= product.id %>/sold-out" method="post">
+                      <button class="btn btn-ghost btn-sm" type="submit">Sold Out</button>
+                    </form>
+                    <form action="/jastiper/products/<%= product.id %>?_method=DELETE" method="post">
+                      <button class="btn btn-ghost btn-sm" type="submit">Delete</button>
+                    </form>
+                  </div>
+                </article>
+              <% }) %>
+            </div>
+          <% } %>
+        </section>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>
