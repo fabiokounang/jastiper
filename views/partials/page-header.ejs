@@ -1,6 +1,6 @@
 <section class="page-header card glass-card">
   <div class="page-header-main">
-    <p class="eyebrow"><%= eyebrow || "Overview" %></p>
+    <p class="eyebrow"><%= typeof eyebrow !== "undefined" ? eyebrow : "Overview" %></p>
     <h1><%= title %></h1>
     <% if (subtitle) { %>
       <p class="muted"><%= subtitle %></p>
