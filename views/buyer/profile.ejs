@@ -7,19 +7,20 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
-          title: 'Buyer Profile',
-          subtitle: 'Manage your account information and delivery addresses comfortably.',
+          eyebrow: 'Buyer',
+          title: 'Profile',
+          subtitle: 'Update personal information and delivery preferences.',
           actions: [{ label: 'Back to Dashboard', href: '/buyer/dashboard', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card cozy">
-            <h3>Personal Details</h3>
-            <p>Name, phone number, and city profile data for smoother checkout steps.</p>
+          <article class="card soft stack">
+            <h3>Personal data</h3>
+            <p class="muted">Name, phone, and regional contact details for checkout convenience.</p>
           </article>
-          <article class="card subtle">
-            <h3>Shipping Addresses</h3>
-            <p>Support multiple addresses and choose a default destination per checkout.</p>
+          <article class="card stack">
+            <h3>Address list</h3>
+            <p class="muted">Manage multiple shipping addresses and default destination options.</p>
           </article>
         </section>
       </div>

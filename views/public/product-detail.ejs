@@ -7,32 +7,29 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
+          eyebrow: 'Public View',
           title: 'Product Detail',
-          subtitle: 'Buyer-facing product page with clean purchase context.',
+          subtitle: 'Simple and readable product context for buyers.',
           actions: [{ label: 'Back to Trip', href: '/trip/' + slug, variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card cozy">
+          <article class="card cozy stack">
             <h3>Trip</h3>
             <p class="mono"><%= slug %></p>
-
-            <h3 style="margin-top: 12px">Product</h3>
+            <h3>Product</h3>
             <p class="mono"><%= productSlug %></p>
-
-            <p>
-              Stage 4 will add image gallery, variant options, pricing breakdown, and Add to Cart
-              controls.
+            <p class="muted">
+              Stage 4 will add gallery, variants, pricing estimate, and add-to-cart action.
             </p>
           </article>
 
-          <article class="card subtle">
-            <h3>What buyers will see</h3>
+          <article class="card stack">
+            <h3>Planned information</h3>
             <ul class="list-clean">
-              <li>Base price + jastip fee estimate</li>
-              <li>Stock and availability status</li>
-              <li>Variant selector and product notes</li>
-              <li>Purchase location details</li>
+              <li>Base price + jastip fee</li>
+              <li>Variant and stock</li>
+              <li>Purchase location notes</li>
             </ul>
           </article>
         </section>

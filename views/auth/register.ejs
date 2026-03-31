@@ -4,22 +4,21 @@
   <body>
     <div class="auth-shell">
       <section class="auth-left">
-        <a href="/" class="brand auth-brand">
-          <span class="brand-mark">J</span>
-          <span class="brand-text">
-            <span class="brand-name">Jastip Platform</span>
-            <small class="brand-tagline">Verified and secure onboarding</small>
+        <a href="/" class="brand">
+          <span class="brand-icon">J</span>
+          <span class="brand-copy">
+            <strong>Jastip Platform</strong>
+            <small>Verified registration flow</small>
           </span>
         </a>
-        <h1>Create account</h1>
-        <p>
-          Register as buyer or jastiper with KTP identity so transactions remain safer for all
-          users.
+        <h1>Create your account</h1>
+        <p class="muted">
+          Register as buyer or jastiper using KTP information to keep platform trusted.
         </p>
       </section>
 
       <section class="auth-right">
-        <div class="card auth-card cozy">
+        <div class="card soft auth-card stack">
           <h2>Register</h2>
           <%- include('../partials/flash') %>
 
@@ -33,7 +32,6 @@
               <label for="email">Email</label>
               <input id="email" type="email" name="email" required />
             </div>
-
             <div>
               <label for="phone">Phone</label>
               <input id="phone" type="text" name="phone" required />
@@ -43,7 +41,6 @@
               <label for="password">Password</label>
               <input id="password" type="password" name="password" required />
             </div>
-
             <div>
               <label for="confirm_password">Confirm Password</label>
               <input id="confirm_password" type="password" name="confirm_password" required />
@@ -56,7 +53,6 @@
                 <option value="jastiper">Jastiper</option>
               </select>
             </div>
-
             <div>
               <label for="ktp_number">KTP Number</label>
               <input id="ktp_number" type="text" name="ktp_number" required />
@@ -67,10 +63,10 @@
               <input id="ktp_photo" type="file" name="ktp_photo" accept="image/*" required />
             </div>
 
-            <button type="submit" class="btn btn-primary full span-2">Create Account</button>
+            <button type="submit" class="btn btn-primary full span-2">Create account</button>
           </form>
 
-          <p class="muted center">Already have account? <a href="/login">Back to login</a></p>
+          <p class="muted center">Already registered? <a href="/login">Back to login</a></p>
         </div>
       </section>
     </div>

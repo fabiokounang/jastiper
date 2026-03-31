@@ -7,8 +7,9 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
-          title: 'Buyer Dashboard',
-          subtitle: 'Track orders, pending payments, and completed transactions with clarity.',
+          eyebrow: 'Buyer',
+          title: 'Dashboard',
+          subtitle: 'Track your order status and pending payment activities.',
           actions: [
             { label: 'Explore Trips', href: '/', variant: 'primary' },
             { label: 'Order History', href: '/buyer/orders', variant: 'secondary' }
@@ -21,9 +22,9 @@
           <article class="card kpi-card"><p class="kpi">0</p><span>Completed Orders</span></article>
         </section>
 
-        <section class="card cozy section-gap">
-          <h3>Stage 4 Focus</h3>
-          <p>Live order timeline, payment details, and delivery tracking will appear here.</p>
+        <section class="card soft section-gap">
+          <h3>Stage 4 integration</h3>
+          <p class="muted">Order timeline and payment status updates will be displayed here.</p>
         </section>
       </div>
     </main>

@@ -7,25 +7,25 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
+          eyebrow: 'Buyer Flow',
           title: 'Checkout',
-          subtitle: 'Finalize receiver, shipping, and payment preferences.',
+          subtitle: 'Finalize shipping details and payment preference.',
           actions: [{ label: 'Back to Cart', href: '/cart', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card cozy">
-            <h3>Shipping + Receiver</h3>
-            <p>
-              Stage 4 will render complete checkout form fields: receiver, phone, address,
-              province, city, postal code, and notes.
+          <article class="card cozy stack">
+            <h3>Shipping form</h3>
+            <p class="muted">
+              Receiver name, phone, address, city, postal code, and checkout notes are prepared
+              for Stage 4.
             </p>
           </article>
 
-          <article class="card subtle">
-            <h3>Payment Handshake</h3>
-            <p>
-              Stage 5 will connect payment method selection, QRIS placeholder flow, and callback
-              status synchronization.
+          <article class="card stack">
+            <h3>Payment area</h3>
+            <p class="muted">
+              QRIS/MNC architecture and callback status sync will be connected in Stage 5.
             </p>
           </article>
         </section>

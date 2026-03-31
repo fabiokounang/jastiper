@@ -7,19 +7,20 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
-          title: 'Jastiper Profile',
-          subtitle: 'Keep your shop identity and payout profile complete for buyer trust.',
+          eyebrow: 'Jastiper',
+          title: 'Profile',
+          subtitle: 'Manage your shop identity and payout profile details.',
           actions: [{ label: 'Back to Dashboard', href: '/jastiper/dashboard', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card cozy">
-            <h3>Shop Identity</h3>
-            <p>Shop name, profile photo, bio, and Instagram account for social credibility.</p>
+          <article class="card soft stack">
+            <h3>Shop profile</h3>
+            <p class="muted">Shop name, bio, Instagram link, and profile photo settings.</p>
           </article>
-          <article class="card subtle">
-            <h3>Bank Information</h3>
-            <p>Optional payout information for easier transaction settlement flow.</p>
+          <article class="card stack">
+            <h3>Bank details</h3>
+            <p class="muted">Optional payout data for future disbursement process.</p>
           </article>
         </section>
       </div>

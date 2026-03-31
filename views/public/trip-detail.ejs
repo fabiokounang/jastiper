@@ -7,28 +7,27 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
-          title: 'Trip Showcase',
-          subtitle: 'Public page where buyers explore available products from a jastiper trip.',
+          eyebrow: 'Public View',
+          title: 'Trip Page',
+          subtitle: 'Buyer-friendly overview for one active jastip trip.',
           actions: [{ label: 'Back Home', href: '/', variant: 'secondary' }]
         }) %>
 
         <section class="grid two-col">
-          <article class="card cozy">
-            <h3>Trip Identifier</h3>
+          <article class="card cozy stack">
+            <h3>Trip slug</h3>
             <p class="mono">/<%= slug %></p>
-            <p>
-              In Stage 4, this section will show destination timeline, order deadline, and
-              published product collection.
+            <p class="muted">
+              Stage 4 will display destination details, deadline, and published product list.
             </p>
           </article>
 
-          <article class="card subtle">
-            <h3>Buyer Flow</h3>
+          <article class="card stack">
+            <h3>Buyer journey</h3>
             <ul class="list-clean">
-              <li>Review trip info and notes</li>
-              <li>Browse products and variants</li>
-              <li>Add selected items to cart</li>
-              <li>Proceed to checkout and payment</li>
+              <li>Read trip information and notes</li>
+              <li>Open product details</li>
+              <li>Add to cart and continue checkout</li>
             </ul>
           </article>
         </section>

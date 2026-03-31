@@ -7,10 +7,11 @@
     <main class="page-shell">
       <div class="container">
         <%- include('../partials/page-header', {
-          title: 'Admin Dashboard',
-          subtitle: 'Observe platform health, business metrics, and risk signals in one screen.',
+          eyebrow: 'Admin',
+          title: 'Dashboard',
+          subtitle: 'Platform overview for users, trips, products, orders, and payments.',
           actions: [
-            { label: 'User Monitoring', href: '/admin/users', variant: 'primary' },
+            { label: 'Manage Users', href: '/admin/users', variant: 'primary' },
             { label: 'Reports', href: '/admin/reports', variant: 'secondary' }
           ]
         }) %>
@@ -22,11 +23,10 @@
           <article class="card kpi-card"><p class="kpi">0</p><span>Total GMV</span></article>
         </section>
 
-        <section class="card cozy section-gap">
-          <h3>Stage 6 Monitoring Map</h3>
-          <p>
-            Verification queue, top destinations, payment success rate, and moderation actions
-            will be connected to this dashboard.
+        <section class="card soft section-gap">
+          <h3>Stage 6 integration</h3>
+          <p class="muted">
+            Verification queue, growth metrics, and moderation activity will be connected here.
           </p>
         </section>
       </div>
