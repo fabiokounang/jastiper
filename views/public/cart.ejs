@@ -9,22 +9,70 @@
         <%- include('../partials/page-header', {
           eyebrow: 'Guest-First Buyer Flow',
           title: 'Shopping Cart',
-          subtitle: 'Review selected items before guest checkout or optional login.',
+          subtitle: 'Review selected items before checkout. Account is optional.',
           actions: [{ label: 'Continue Browsing', href: '/', variant: 'secondary' }]
         }) %>
+        <%- include('../partials/flash') %>
 
-        <section class="card cozy">
-          <div class="empty-state">
-            <h3>Cart interaction will be active in Stage 4</h3>
-            <p>
-              Quantity control, variants, notes, and cart totals will be connected in buyer
-              module implementation with guest-first checkout.
-            </p>
-            <div class="actions">
-              <a class="btn btn-primary" href="/checkout">Go to Checkout</a>
+        <% if (!cart.items.length) { %>
+          <section class="card cozy">
+            <div class="empty-state">
+              <h3>Your cart is empty</h3>
+              <p>Add products from a published trip to continue.</p>
+              <div class="actions">
+                <a class="btn btn-primary" href="/">Explore Trips</a>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        <% } else { %>
+          <section class="grid two-col">
+            <article class="card stack">
+              <h3>Items</h3>
+              <% cart.items.forEach((item) => { %>
+                <div class="card subtle stack">
+                  <div class="actions" style="justify-content:space-between; align-items:flex-start;">
+                    <div>
+                      <h4><%= item.name %></h4>
+                      <p class="muted">
+                        <a href="/trip/<%= item.trip_slug %>/product/<%= item.product_slug %>">View product</a>
+                      </p>
+                      <p class="muted">Unit total: <%= item.currency %> <%= Number(item.unit_price).toLocaleString('id-ID') %></p>
+                    </div>
+                    <span class="badge"><%= item.currency %> <%= Number(item.line_total).toLocaleString('id-ID') %></span>
+                  </div>
+
+                  <form action="/cart/items/<%= item.product_id %>?_method=PUT" method="post" class="form-grid two-col">
+                    <div>
+                      <label for="qty-<%= item.product_id %>">Quantity</label>
+                      <input id="qty-<%= item.product_id %>" type="number" name="quantity" min="1" max="999" value="<%= item.quantity %>" required />
+                    </div>
+                    <div>
+                      <label for="note-<%= item.product_id %>">Note (optional)</label>
+                      <input id="note-<%= item.product_id %>" type="text" name="note" maxlength="255" value="<%= item.note || '' %>" />
+                    </div>
+                    <div class="span-2 actions">
+                      <button class="btn btn-ghost btn-sm" type="submit">Update Item</button>
+                    </div>
+                  </form>
+
+                  <form action="/cart/items/<%= item.product_id %>?_method=DELETE" method="post">
+                    <button class="btn btn-ghost btn-sm" type="submit">Remove</button>
+                  </form>
+                </div>
+              <% }) %>
+            </article>
+
+            <article class="card cozy stack">
+              <h3>Summary</h3>
+              <p class="muted">Subtotal: <strong><%= cart.currency %> <%= Number(cart.subtotal_amount).toLocaleString('id-ID') %></strong></p>
+              <p class="muted">Jastip Fee: <strong><%= cart.currency %> <%= Number(cart.jastip_fee_amount).toLocaleString('id-ID') %></strong></p>
+              <p><strong>Total: <%= cart.currency %> <%= Number(cart.total_amount).toLocaleString('id-ID') %></strong></p>
+              <div class="actions">
+                <a class="btn btn-primary" href="/checkout">Proceed to Checkout</a>
+              </div>
+            </article>
+          </section>
+        <% } %>
       </div>
     </main>
 

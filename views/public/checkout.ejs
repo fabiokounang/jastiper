@@ -6,6 +6,7 @@
 
     <main class="page-shell">
       <div class="container">
+        <%- include('../partials/flash') %>
         <%- include('../partials/page-header', {
           eyebrow: 'Guest Checkout',
           title: 'Checkout',
@@ -13,23 +14,129 @@
           actions: [{ label: 'Back to Cart', href: '/cart', variant: 'secondary' }]
         }) %>
 
-        <section class="grid two-col">
-          <article class="card cozy stack">
-            <h3>Guest shipping form</h3>
-            <p class="muted">
-              Receiver name, phone, address, city, postal code, and checkout notes are prepared
-              for Stage 4.
-            </p>
-          </article>
+        <% if (!cart.items || cart.items.length === 0) { %>
+          <section class="card cozy empty-state">
+            <h3>Your cart is empty</h3>
+            <p class="muted">Add products first before checking out.</p>
+            <div class="actions" style="justify-content:center; margin-top:12px">
+              <a class="btn btn-primary" href="/">Browse Trips</a>
+            </div>
+          </section>
+        <% } else { %>
+          <section class="grid two-col">
+            <article class="card cozy stack">
+              <h3>Shipping form</h3>
+              <form action="/checkout" method="post" class="form-grid">
+                <div>
+                  <label for="receiver_name">Receiver Name</label>
+                  <input
+                    id="receiver_name"
+                    name="receiver_name"
+                    value="<%= form.receiver_name || '' %>"
+                    required
+                  />
+                </div>
 
-          <article class="card stack">
-            <h3>Payment area</h3>
-            <p class="muted">
-              QRIS/MNC architecture and callback status sync will be connected in Stage 5.
-              Buyer account creation will be optional after successful payment.
-            </p>
-          </article>
-        </section>
+                <div>
+                  <label for="receiver_phone">Receiver Phone</label>
+                  <input
+                    id="receiver_phone"
+                    name="receiver_phone"
+                    value="<%= form.receiver_phone || '' %>"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label for="shipping_address">Shipping Address</label>
+                  <textarea
+                    id="shipping_address"
+                    name="shipping_address"
+                    rows="3"
+                    required
+                  ><%= form.shipping_address || '' %></textarea>
+                </div>
+
+                <div>
+                  <label for="province">Province</label>
+                  <input id="province" name="province" value="<%= form.province || '' %>" required />
+                </div>
+
+                <div>
+                  <label for="city">City</label>
+                  <input id="city" name="city" value="<%= form.city || '' %>" required />
+                </div>
+
+                <div>
+                  <label for="postal_code">Postal Code</label>
+                  <input
+                    id="postal_code"
+                    name="postal_code"
+                    value="<%= form.postal_code || '' %>"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label for="guest_email">Guest Email (optional)</label>
+                  <input
+                    id="guest_email"
+                    name="guest_email"
+                    type="email"
+                    value="<%= form.guest_email || '' %>"
+                  />
+                </div>
+
+                <div>
+                  <label for="guest_phone">Guest Phone (optional)</label>
+                  <input id="guest_phone" name="guest_phone" value="<%= form.guest_phone || '' %>" />
+                </div>
+
+                <div>
+                  <label for="payment_method">Payment Method</label>
+                  <select id="payment_method" name="payment_method">
+                    <option value="qris_mnc" <%= form.payment_method === 'qris_mnc' ? 'selected' : '' %>>
+                      QRIS (MNC)
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="checkout_notes">Checkout Notes (optional)</label>
+                  <textarea
+                    id="checkout_notes"
+                    name="checkout_notes"
+                    rows="3"
+                  ><%= form.checkout_notes || '' %></textarea>
+                </div>
+
+                <div class="actions">
+                  <button type="submit" class="btn btn-primary">Place Order</button>
+                </div>
+              </form>
+            </article>
+
+            <article class="card stack">
+              <h3>Order Summary</h3>
+              <p class="muted">Items: <strong><%= cart.items.length %></strong></p>
+              <p class="muted">
+                Subtotal:
+                <strong><%= cart.currency %> <%= Number(cart.subtotal_amount || 0).toLocaleString('id-ID') %></strong>
+              </p>
+              <p class="muted">
+                Jastip Fee:
+                <strong><%= cart.currency %> <%= Number(cart.jastip_fee_amount || 0).toLocaleString('id-ID') %></strong>
+              </p>
+              <p class="muted">
+                Total:
+                <strong><%= cart.currency %> <%= Number(cart.total_amount || 0).toLocaleString('id-ID') %></strong>
+              </p>
+              <p class="muted">
+                Buyer account creation remains optional and can be offered after successful payment.
+              </p>
+            </article>
+          </section>
+        <% } %>
       </div>
     </main>
 

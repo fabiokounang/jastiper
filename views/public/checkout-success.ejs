@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head', { title }) %>
+  <body>
+    <%- include('../partials/header') %>
+
+    <main class="page-shell">
+      <div class="container">
+        <%- include('../partials/page-header', {
+          eyebrow: 'Order Created',
+          title: 'Thank you, your order is submitted',
+          subtitle: 'Continue payment in Stage 5. Guest checkout is recorded successfully.',
+          actions: [{ label: 'Back Home', href: '/', variant: 'secondary' }]
+        }) %>
+
+        <section class="grid two-col">
+          <article class="card cozy stack">
+            <h3>Order Summary</h3>
+            <p><strong>Order Code:</strong> <span class="mono"><%= order.order_code %></span></p>
+            <p><strong>Status:</strong> <%= order.status %></p>
+            <p><strong>Payment Status:</strong> <%= order.payment_status %></p>
+            <p>
+              <strong>Total:</strong>
+              <%= order.currency %> <%= Number(order.total_amount || 0).toLocaleString('id-ID') %>
+            </p>
+            <p class="muted">
+              Optional next step: create an account later to track future orders faster.
+            </p>
+          </article>
+
+          <article class="card stack">
+            <h3>Shipping To</h3>
+            <p><strong><%= order.receiver_name %></strong> · <%= order.receiver_phone %></p>
+            <p class="muted"><%= order.shipping_address %></p>
+            <p class="muted"><%= order.city %>, <%= order.province %> <%= order.postal_code %></p>
+          </article>
+        </section>
+
+        <section class="card soft section-gap stack">
+          <h3>Items</h3>
+          <% if (order.items && order.items.length) { %>
+            <div class="grid two-col">
+              <% order.items.forEach((item) => { %>
+                <article class="card stack">
+                  <h4><%= item.product_name_snapshot %></h4>
+                  <p class="muted">Qty: <%= item.quantity %></p>
+                  <p class="muted">
+                    Line total:
+                    <%= order.currency %> <%= Number(item.line_total || 0).toLocaleString('id-ID') %>
+                  </p>
+                </article>
+              <% }) %>
+            </div>
+          <% } %>
+        </section>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

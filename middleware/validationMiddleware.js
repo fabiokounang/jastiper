@@ -36,6 +36,11 @@ module.exports = (req, res, next) => {
     return res.redirect("back");
   }
 
+  if (req.originalUrl.includes("/cart") || req.originalUrl.includes("/checkout")) {
+    req.flash("error", errors.array()[0].msg);
+    return res.redirect("back");
+  }
+
   return res.status(422).render("errors/422", {
     title: "Validation Error",
     errors: errors.array(),

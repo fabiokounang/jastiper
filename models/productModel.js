@@ -333,6 +333,49 @@ exports.listPublicByTripId = async (tripId, db = pool) => {
   return rows;
 };
 
+exports.findPublicByIds = async (ids, db = pool) => {
+  const normalizedIds = [...new Set((ids || []).map((id) => Number(id)).filter((id) => id > 0))];
+  if (!normalizedIds.length) {
+    return [];
+  }
+
+  const placeholders = normalizedIds.map(() => "?").join(", ");
+  const [rows] = await db.execute(
+    `
+      SELECT
+        p.id,
+        p.trip_id,
+        p.user_id,
+        p.name,
+        p.slug,
+        p.base_price,
+        p.jastip_fee,
+        p.final_price_estimate,
+        p.currency,
+        p.stock,
+        p.availability_status,
+        p.product_status,
+        t.slug AS trip_slug,
+        (
+          SELECT pi.image_path
+          FROM product_images pi
+          WHERE pi.product_id = p.id
+          ORDER BY pi.is_primary DESC, pi.sort_order ASC, pi.id ASC
+          LIMIT 1
+        ) AS primary_image
+      FROM products p
+      INNER JOIN trips t ON t.id = p.trip_id
+      WHERE p.id IN (${placeholders})
+        AND p.product_status IN ('published', 'sold_out')
+        AND t.is_public = 1
+        AND t.status IN ('published', 'active')
+    `,
+    normalizedIds,
+  );
+
+  return rows;
+};
+
 exports.findPublicByTripAndSlug = async (tripId, slug, db = pool) => {
   const product = await exports.findByTripAndSlugPublic(tripId, slug, db);
   if (!product) {
